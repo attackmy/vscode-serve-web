@@ -10,5 +10,5 @@ ADD code code
 RUN chmod 777 code
 
 # container を止めないためのおまじない
-ENTRYPOINT ["code"]
+ENTRYPOINT ["/home/code"]
 CMD ["serve-web"]
