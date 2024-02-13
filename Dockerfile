@@ -5,10 +5,10 @@ ENV HOME=${APP_ROOT}
 WORKDIR ${APP_ROOT}
 
 # もっと丁寧に権限を設定すべきだが、、
-RUN chmod 777 /home
-ADD code /home/code
-RUN chmod 777 /home/code
+RUN chmod 777 ${APP_ROOT}
+ADD code code
+RUN chmod 777 code
 
 # container を止めないためのおまじない
-ENTRYPOINT ["/home/code"]
+ENTRYPOINT ["code"]
 CMD ["serve-web"]
