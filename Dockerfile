@@ -9,8 +9,5 @@ RUN chmod 777 ${APP_ROOT}
 ADD code code
 RUN chmod 777 code
 
-RUN echo '#!/bin/sh' > startup.sh
-RUN echo '/home/code serve-web --accept-server-license-terms --host $(hostname -i)' >> startup.sh
-RUN chmod 777 startup.sh
-
-ENTRYPOINT ["/home/startup.sh"]
+# --hostを指定しないと外部からアクセスできない
+ENTRYPOINT ["/bin/sh", "-c", "/home/code serve-web --accept-server-license-terms --host $(hostname -i)"]
